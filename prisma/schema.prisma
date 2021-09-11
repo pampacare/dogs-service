@@ -1,0 +1,53 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model area {
+  id          Int     @id @default(autoincrement())
+  description String
+  owner       owner[]
+}
+
+model owner {
+  id           String  @id
+  name         String
+  neighborhood String?
+  street       String?
+  lat          Float
+  long         Float
+  complement   String?
+  area         area    @relation(fields: [area_id], references: [id])
+  area_id      Int
+  dog          dog[]
+}
+
+model breed {
+  id   Int    @id @default(autoincrement())
+  name String
+  dog  dog[]
+}
+
+model gender {
+  id          Int    @id @default(autoincrement())
+  description String
+  dog         dog[]
+}
+
+model dog {
+  id          String  @id
+  name        String
+  born_year   Int?
+  is_dead     Boolean @default(false)
+  wear_collar Boolean
+  gender      gender  @relation(fields: [gender_id], references: [id])
+  gender_id   Int
+  owner       owner?  @relation(fields: [owner_id], references: [id])
+  owner_id    String
+  breed       breed   @relation(fields: [breed_id], references: [id])
+  breed_id    Int
+}
