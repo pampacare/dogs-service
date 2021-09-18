@@ -1,2 +1,1 @@
-export * from './UpdateAddresOwner'
-
+export * from '../owners/UpdateAddresOwnerController'
