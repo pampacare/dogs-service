@@ -1,10 +1,13 @@
 import { prisma } from '../../services'
 import { Request, Response } from 'express'
 import { v4 as uuidv4 } from 'uuid'
+import { validateRequiredFields } from '../../validators'
 
 class CreateDogController {
   async execute (request: Request, response: Response): Promise<Response> {
     try {
+      await validateRequiredFields(request, ['name', 'bornYear', 'wearCollar', 'genderId', 'ownerId', 'breedId'])
+
       const { name, bornYear, wearCollar, genderId, ownerId, breedId } =
         request.body
 
