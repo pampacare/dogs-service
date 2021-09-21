@@ -7,21 +7,8 @@ import { prisma } from '../../services'
 class CreateOwnerController implements Controller {
   async execute (request: Request, response: Response): Promise<Response> {
     try {
-      await validateRequiredFields(request, ['name', 'neighborhood', 'street', 'lat', 'long', 'area'])
-      const { name, neighborhood, street, lat, long, area } = request.body
-
-      const getArea = await prisma.area.findFirst({
-        where: {
-          description: area
-        },
-        select: {
-          id: true
-        }
-      })
-
-      if (!getArea) {
-        throw new Error('Área não existe')
-      }
+      await validateRequiredFields(request, ['name', 'neighborhood', 'street', 'lat', 'long', 'complement', 'areaId'])
+      const { name, neighborhood, street, lat, long, complement, areaId } = request.body
 
       const id: string = v4()
 
@@ -33,7 +20,8 @@ class CreateOwnerController implements Controller {
           street: street,
           lat: lat,
           long: long,
-          area_id: getArea.id
+          complement: complement,
+          area_id: areaId
         }
       })
 

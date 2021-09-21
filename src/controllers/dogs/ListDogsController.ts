@@ -20,13 +20,15 @@ class ListDogsController {
       where = convertToNumber(where, 'area_id')
       where = convertToContains(where, ['name', 'neighborhood', 'street'])
 
-      const owner = await prisma.owner.findMany({
+      const dogs = await prisma.owner.findMany({
         where: where,
         select: {
+          street: true,
+          neighborhood: true,
           dog: true
         }
       })
-      return response.json(owner)
+      return response.json(dogs)
     } catch (erro) {
       return response.status(400).json({
         message: erro
