@@ -2,16 +2,12 @@ import { Router } from 'express'
 import { UpdateAddressOwner } from '../controllers/owners/UpdateAddresOwnerController'
 import CreateOwnerController from '../controllers/owners/CreateOwnerController'
 
-const ownerRoutes = (router: Router): void => {
-  router.post('/owner', async (req, res) => {
-    const createOwnerController = new CreateOwnerController()
-    await createOwnerController.execute(req, res)
-  })
+const createOwnerController = new CreateOwnerController()
+const updateAddressOwner = new UpdateAddressOwner()
 
-  router.put('/owner/:id', async (req, res) => {
-    const updateAddressOwner = new UpdateAddressOwner()
-    await updateAddressOwner.execute(req,res)
-  })
+const ownerRoutes = (router: Router): void => {
+  router.post('/owner', createOwnerController.execute.bind(CreateOwnerController))
+  router.put('/owner/:id', updateAddressOwner.execute.bind(UpdateAddressOwner))
 }
 
 export { ownerRoutes }
