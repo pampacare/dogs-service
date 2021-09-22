@@ -1,8 +1,10 @@
 import { Router } from 'express'
-import { userRoutes } from './users.routes'
+import { dogsRoutes } from './dogs.routes'
+import { ownerRoutes } from './owner.routes'
 
 const router = Router()
 
-userRoutes(router)
+dogsRoutes(router)
+ownerRoutes(router)
 
 export { router }
