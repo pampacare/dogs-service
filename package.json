@@ -12,10 +12,11 @@
     ]
   },
   "scripts": {
-    "dev": "yarn model:sync && yarn server:dev",
+    "dev": "dotenv -e .dev.env && yarn model:sync && yarn server:dev",
     "server:dev": "nodemon --files src/server.ts",
+    "prod-model:sync": "dotenv -e .dev.env -- yarn model:sync",
     "model:sync": "prisma migrate dev",
-    "build": "yarn model:sync && tsc --project ./",
+    "build": "dotenv -e .env && yarn model:sync && tsc --project",
     "test": "jest --passWithNoTests --runInBand"
   },
   "devDependencies": {
@@ -28,6 +29,7 @@
     "@types/uuid": "^8.3.0",
     "@typescript-eslint/eslint-plugin": "^3.5.0",
     "@typescript-eslint/parser": "^3.0.0",
+    "dotenv-cli": "^4.0.0",
     "eslint": "^7.3.1",
     "eslint-config-standard-with-typescript": "^18.0.2",
     "eslint-plugin-import": "^2.22.0",
