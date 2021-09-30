@@ -1,13 +1,12 @@
-import { Router } from 'express'
-import { UpdateAddressOwner } from '../controllers/owners/UpdateAddresOwnerController'
-import CreateOwnerController from '../controllers/owners/CreateOwnerController'
-
-const createOwnerController = new CreateOwnerController()
-const updateAddressOwner = new UpdateAddressOwner()
-
+import { response, Router } from 'express'
+import { UpdateAddressOwner } from '../controllers/users/UpdateAddresOwner';
 const ownerRoutes = (router: Router): void => {
-  router.post('/owner', createOwnerController.execute.bind(CreateOwnerController))
-  router.put('/owner/:id', updateAddressOwner.execute.bind(UpdateAddressOwner))
-}
+    router.put('/owner/:id', (req, res) => {
+        const updateAddressOwner = new UpdateAddressOwner();
+        updateAddressOwner.execute(req,res)
+        
+    });
+   
+  }
 
-export { ownerRoutes }
+  export {ownerRoutes}
