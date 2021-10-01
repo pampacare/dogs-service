@@ -22,7 +22,7 @@ afterAll(async () => {
 })
 
 describe('PUT /owner/:id', () => {
-  it('should return 200 if all required fields are supplied', () => {
+  it('should return 200 if all required fields are supplied', async () => {
     return supertest(app)
       .put(`/owner/${ownerData.id}`)
       .send(
@@ -38,7 +38,7 @@ describe('PUT /owner/:id', () => {
       .expect(201)
   })
 
-  it('should return 400 if some required field are not supplied', () => {
+  it('should return 400 if some required field are not supplied', async () => {
     return supertest(app)
       .put(`/owner/${ownerData.id}`)
       .send(
