@@ -4,9 +4,11 @@ on:
   push:
     branches:
       - master
+      - develop
   pull_request:
     branches:
       - master
+      - develop
 
 jobs:
   build:
@@ -14,12 +16,17 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-
+  
     - name: Install Node.js
       uses: actions/setup-node@v1
       with:
         node-version: 14.x
-    - run: yarn
-    - run: yarn test
-      env:
-        CI: true
+
+    - name: Install Dependencies
+      run: yarn
+
+    - name: Run tests
+      run: yarn test
+
+    - name: Check ESLint
+      run: yarn lint

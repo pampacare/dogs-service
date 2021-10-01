@@ -16,7 +16,8 @@
     "server:dev": "nodemon --files src/server.ts",
     "model:sync": "prisma migrate dev",
     "build": "yarn model:sync && tsc --project ./",
-    "test": "jest --passWithNoTests --runInBand"
+    "test": "jest --passWithNoTests --runInBand",
+    "lint": "yarn eslint \"**/*.ts\""
   },
   "devDependencies": {
     "@types/bcrypt": "^5.0.0",
