@@ -44,8 +44,8 @@ model dog {
   born_year   Int?
   is_dead     Boolean @default(false)
   wear_collar Boolean
-  sex      sex  @relation(fields: [sex_id], references: [id])
-  sex_id   Int
+  sex         sex     @relation(fields: [sex_id], references: [id])
+  sex_id      Int
   owner       owner?  @relation(fields: [owner_id], references: [id])
   owner_id    String
   breed       breed   @relation(fields: [breed_id], references: [id])
