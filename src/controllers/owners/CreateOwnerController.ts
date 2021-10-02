@@ -1,10 +1,9 @@
-import { Controller } from '../../protocols'
 import { Request, Response } from 'express'
 import { v4 } from 'uuid'
 import { validateRequiredFields } from '../../validators'
 import { prisma } from '../../services'
 
-class CreateOwnerController implements Controller {
+class CreateOwnerController {
   async execute (request: Request, response: Response): Promise<Response> {
     try {
       await validateRequiredFields(request, ['name', 'neighborhood', 'street', 'lat', 'long', 'complement', 'areaId'])

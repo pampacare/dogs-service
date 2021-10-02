@@ -8,7 +8,7 @@ class CreateDogController {
     try {
       await validateRequiredFields(request, ['name', 'bornYear', 'wearCollar', 'genderId', 'ownerId', 'breedId'])
 
-      const { name, bornYear, wearCollar, genderId, ownerId, breedId } =
+      const { name, bornYear, wearCollar, sexId, ownerId, breedId } =
         request.body
 
       const owner = await prisma.owner.findFirst({
@@ -28,7 +28,7 @@ class CreateDogController {
           is_dead: false,
           owner_id: ownerId,
           breed_id: breedId,
-          gender_id: genderId
+          sex_id: sexId
         }
       })
 

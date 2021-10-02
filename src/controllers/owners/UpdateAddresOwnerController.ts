@@ -12,8 +12,7 @@ class UpdateAddressOwner {
         'long',
         'street',
         'areaId',
-        'neighborhood',
-        'complement'
+        'neighborhood'
       ]
       await validateRequiredFields(request, fields)
       let owner = await prisma.owner.findFirst({
@@ -23,12 +22,12 @@ class UpdateAddressOwner {
         throw new Error('Proprietário não existe')
       }
       owner = await prisma.owner.update({
-        where: { id: owner.id },
+        where: { id: idOwner },
         data: {
           lat: lat,
           long: long,
           street: street,
-          area_id: areaId,
+          area_id: parseInt(areaId),
           neighborhood: neighborhood,
           complement: complement
         }
