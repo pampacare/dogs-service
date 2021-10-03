@@ -21,12 +21,12 @@ const areaTest = {
 beforeAll(async () => {
   await prisma.area.create({ data: areaTest })
   await prisma.owner.create({ data: ownerData })
-})
+}, 30000)
 
 afterAll(async () => {
   await prisma.owner.delete({ where: { id: '123' } })
   await prisma.area.delete({ where: { id: 200 } })
-})
+}, 30000)
 
 describe('PUT /owner/:id', () => {
   it('should return 200 if all required fields are supplied', async () => {

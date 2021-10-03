@@ -39,7 +39,8 @@ beforeAll(async () => {
   await prisma.sex.create({ data: sexTestMal })
   await prisma.area.create({ data: areaTest })
   await prisma.owner.create({ data: ownerTest })
-})
+}, 30000)
+
 afterAll(async () => {
   await prisma.dog.delete({ where: { id: '200' } })
   await prisma.breed.delete({ where: { id: 69 } })
@@ -47,7 +48,7 @@ afterAll(async () => {
   await prisma.sex.delete({ where: { id: 96 } })
   await prisma.owner.delete({ where: { id: '1227' } })
   await prisma.area.delete({ where: { id: 69 } })
-})
+}, 30000)
 
 describe('POST /dogs', () => {
   it('deve retornar status code 201, todos os campos com os dados corretos', async () => {
