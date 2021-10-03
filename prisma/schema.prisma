@@ -1,6 +1,7 @@
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider          = "postgresql"
+  url               = env("DATABASE_URL")
+  shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
 }
 
 generator client {
@@ -39,7 +40,7 @@ model sex {
 }
 
 model dog {
-  id          String  @id
+  id          String  @id @default(uuid())
   name        String
   born_year   Int?
   is_dead     Boolean @default(false)

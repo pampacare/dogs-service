@@ -1,6 +1,5 @@
 import { prisma } from '../../services'
 import { Request, Response } from 'express'
-import { v4 as uuidv4 } from 'uuid'
 import { validateRequiredFields } from '../../validators'
 
 class CreateDogController {
@@ -8,7 +7,7 @@ class CreateDogController {
     try {
       await validateRequiredFields(request, ['name', 'bornYear', 'wearCollar', 'sexId', 'ownerId', 'breedId'])
 
-      const { name, bornYear, wearCollar, sexId, ownerId, breedId } =
+      const { id, name, bornYear, wearCollar, sexId, ownerId, breedId } =
         request.body
 
       const owner = await prisma.owner.findFirst({
@@ -21,7 +20,7 @@ class CreateDogController {
 
       const createDog = await prisma.dog.create({
         data: {
-          id: uuidv4(),
+          id: id,
           name: name,
           born_year: bornYear,
           wear_collar: wearCollar,
