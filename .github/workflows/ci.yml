@@ -25,13 +25,10 @@ jobs:
       run: yarn
       
     - name: Create .env file
-      env:
-        DATABASE_URL: ${{ secrets.DATABASE_URL }}
-        SHADOW_DATABASE_URL: ${{ secrets.SHADOW_DATABASE_URL }}
       run: |
         touch .env
-        echo DATABASE_URL=$DATABASE_URL >> .env
-        echo SHADOW_DATABASE_URL=$SHADOW_DATABASE_URL >> .env
+        echo DATABASE_URL=${{ secrets.DATABASE_URL }} >> .env
+        echo SHADOW_DATABASE_URL=${{ secrets.SHADOW_DATABASE_URL }} >> .env
 
     - name: Run test
       run: yarn test
