@@ -1,5 +1,4 @@
 import { Request, Response } from 'express'
-import { v4 } from 'uuid'
 import { validateRequiredFields } from '../../validators'
 import { prisma } from '../../services'
 
@@ -7,9 +6,7 @@ class CreateOwnerController {
   async execute (request: Request, response: Response): Promise<Response> {
     try {
       await validateRequiredFields(request, ['name', 'neighborhood', 'street', 'lat', 'long', 'complement', 'areaId'])
-      const { name, neighborhood, street, lat, long, complement, areaId } = request.body
-
-      const id: string = v4()
+      const { id, name, neighborhood, street, lat, long, complement, areaId } = request.body
 
       const ownerCreation = await prisma.owner.create({
         data: {
