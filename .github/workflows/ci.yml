@@ -35,6 +35,3 @@ jobs:
 
     - name: Check ESLint
       run: yarn lint
-      
-    - name: Remove .env file
-    - run: rm .env
