@@ -11,11 +11,11 @@ const areaTest = {
 
 beforeAll(async () => {
   await prisma.area.create({ data: areaTest })
-})
+}, 30000)
 afterAll(async () => {
   await prisma.owner.delete({ where: { id: '1228' } })
   await prisma.area.delete({ where: { id: 55 } })
-})
+}, 30000)
 
 describe('POST /owner', () => {
   it('deve retornar status code 201, todos os campos com os dados corretos', async () => {
