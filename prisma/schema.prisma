@@ -15,7 +15,7 @@ model area {
 }
 
 model owner {
-  id           String  @id
+  id           String  @id @default(uuid())
   name         String
   neighborhood String?
   street       String?
