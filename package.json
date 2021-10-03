@@ -12,7 +12,7 @@
     ]
   },
   "scripts": {
-    "dev": "dotenv -e .dev.env && yarn model:sync && yarn server:dev",
+    "dev": "yarn model:sync && yarn server:dev",
     "server:dev": "nodemon --files src/server.ts",
     "prod-model:sync": "dotenv -e .dev.env -- yarn model:sync",
     "model:sync": "prisma migrate dev",
