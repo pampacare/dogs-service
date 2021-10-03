@@ -15,20 +15,20 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-  
+
     - name: Install Node.js
       uses: actions/setup-node@v1
       with:
         node-version: 14.x
 
-    - name: Install Dependencies
-      run: yarn
-      
     - name: Create .env file
       run: |
         touch .env
         echo DATABASE_URL=${{ secrets.DATABASE_URL }} >> .env
         echo SHADOW_DATABASE_URL=${{ secrets.SHADOW_DATABASE_URL }} >> .env
+
+    - name: Install Dependencies
+      run: yarn
 
     - name: Run test
       run: yarn test
