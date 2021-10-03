@@ -34,16 +34,11 @@ const ownerTest = {
 }
 
 beforeAll(async () => {
-  const tnc = await prisma.breed.create({ data: breedTest })
-  console.log(tnc)
-  const merda = await prisma.sex.create({ data: sexTestFem })
-  console.log(merda)
-  const sla = await prisma.sex.create({ data: sexTestMal })
-  console.log(sla)
-  const milf = await prisma.area.create({ data: areaTest })
-  console.log(milf)
-  const nsei = await prisma.owner.create({ data: ownerTest })
-  console.log(nsei)
+  await prisma.breed.create({ data: breedTest })
+  await prisma.sex.create({ data: sexTestFem })
+  await prisma.sex.create({ data: sexTestMal })
+  await prisma.area.create({ data: areaTest })
+  await prisma.owner.create({ data: ownerTest })
 })
 afterAll(async () => {
   await prisma.dog.delete({ where: { id: '200' } })
