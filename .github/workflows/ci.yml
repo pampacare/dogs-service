@@ -20,12 +20,17 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: 14.x
-
+        
+    - name: Setup secrets
+    - uses: secrethub/actions/env-export@v0.1.0
+      env:
+        DATABASE_URL: ${{ secrets.DATABASE_URL }}
+        SHADOW_DATABASE_URL: ${{ secrets.SHADOW_DATABASE_URL }}
     - name: Create .env file
       run: |
         touch .env
-        echo DATABASE_URL=${{ env.DATABASE_URL }} >> .env
-        echo SHADOW_DATABASE_URL=${{ env.SHADOW_DATABASE_URL }} >> .env
+        echo DATABASE_URL=$DATABASE_URL >> .env
+        echo SHADOW_DATABASE_URL=$SHADOW_DATABASE_URL >> .env
 
     - name: Install Dependencies
       run: yarn
