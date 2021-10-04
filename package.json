@@ -13,6 +13,7 @@
   },
   "scripts": {
     "dev": "yarn model:sync && yarn server:dev",
+    "start": "node dist/src/server.js",
     "server:dev": "nodemon --files src/server.ts",
     "model:sync": "prisma migrate dev",
     "build": "yarn model:sync && tsc --project ./",
