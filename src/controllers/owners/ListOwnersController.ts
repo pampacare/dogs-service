@@ -23,10 +23,10 @@ class ListOwnersController {
       const dogs = await prisma.owner.findMany({
         where: where,
         select: {
+          id: true,
           name: true,
           street: true,
-          neighborhood: true,
-          dog: true
+          neighborhood: true
         }
       })
       return response.json(dogs)
