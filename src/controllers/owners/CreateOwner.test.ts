@@ -34,22 +34,7 @@ describe('POST /owner', () => {
       })
       .expect(201)
   })
-  it('Deve retornar status code 400, campo name inválido', async () => {
-    return supertest(app)
-      .post(pathOwner)
-      .send({
-        id: '1228',
-        name: 23,
-        neighborhood: 'Bairro teste',
-        street: 'Rua teste',
-        lat: -2312321321,
-        long: -123151232,
-        complement: 'Teste',
-        areaId: 55,
-        dog: []
-      })
-      .expect(400)
-  })
+
   it('Deve retornar status code 400, campo name não preenchido', async () => {
     return supertest(app)
       .post(pathOwner)
@@ -235,46 +220,6 @@ describe('POST /owner', () => {
         long: -123151232,
         complement: 'Teste',
         dog: []
-      })
-      .expect(400)
-  })
-  it('Deve retornar status code, campo dog inválido', async () => {
-    return supertest(app)
-      .post(pathOwner)
-      .send({
-        name: 'Owner teste',
-        neighborhood: 'Bairro teste',
-        street: 'Rua teste',
-        lat: -2312321321,
-        long: -123151232,
-        complement: 'Teste',
-        areaId: 55,
-        dog: [
-          [{
-            id: '200',
-            name: 'Pitoco',
-            bornYear: 2020,
-            wearCollar: true,
-            sexId: 69,
-            ownerId: '1227',
-            breedId: 69
-          }
-          ]
-        ]
-      })
-      .expect(400)
-  })
-  it('Deve retornar status code, campo dog não preenchido', async () => {
-    return supertest(app)
-      .post(pathOwner)
-      .send({
-        name: 'Owner teste',
-        neighborhood: 'Bairro teste',
-        street: 'Rua teste',
-        lat: -2312321321,
-        long: -123151232,
-        complement: 'Teste',
-        areaId: 55
       })
       .expect(400)
   })
