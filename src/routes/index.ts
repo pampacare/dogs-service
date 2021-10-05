@@ -6,7 +6,7 @@ const router = Router()
 
 router.get('/', (req: Request, res: Response) => {
   res.send({
-    message: 'New Message!'
+    message: 'New teste!'
   })
 })
 
