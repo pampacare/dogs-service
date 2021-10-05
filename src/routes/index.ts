@@ -6,7 +6,7 @@ const router = Router()
 
 router.get('/', (req: Request, res: Response) => {
   res.send({
-    message: 'Working!'
+    message: 'Hello World!'
   })
 })
 dogsRoutes(router)
