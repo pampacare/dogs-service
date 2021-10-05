@@ -40,7 +40,7 @@ describe('PUT /owner/:id', () => {
         neighborhood: 'Cabo Luis Quevedo',
         complement: 'Lote A2'
       })
-      .expect(404)
+      .expect(201)
   })
 
   it('should return 400 if some required field are not supplied', async () => {
