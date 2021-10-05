@@ -1,7 +1,6 @@
 import { Request, Response, Router } from 'express'
 import { dogsRoutes } from './dogs.routes'
 import { ownerRoutes } from './owner.routes'
-import { dogsRoutes } from './dogs.routes'
 
 const router = Router()
 
@@ -10,8 +9,8 @@ router.get('/', (req: Request, res: Response) => {
     message: 'New Message!'
   })
 })
+
 dogsRoutes(router)
 ownerRoutes(router)
-dogsRoutes(router)
 
 export { router }
