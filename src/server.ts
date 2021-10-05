@@ -1,10 +1,6 @@
-import app from './app'
+import express from 'express'
 
-const port = 3333
-
-app.use(express.json())
-
-app.use(router)
+const app = express()
 
 app.listen(process.env.PORT ?? 3333, () =>
   console.log('🚀 REST API server ready')
