@@ -1,3 +1,4 @@
 node_modules
 .env
-dist
+.dev.env
+yarn-error.log

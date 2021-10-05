@@ -1,7 +1,6 @@
-import express from 'express'
-import { router } from './routes'
+import app from './app'
 
-const app = express()
+const port = 3333
 
 app.use(express.json())
 

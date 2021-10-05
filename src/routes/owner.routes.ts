@@ -1,5 +1,5 @@
 import { Router } from 'express'
-import { UpdateAddressOwner } from '../controllers/owners/UpdateAddresOwnerController'
+import { UpdateAddressOwner } from '../controllers/owners/UpdateAddresOwner'
 import CreateOwnerController from '../controllers/owners/CreateOwnerController'
 
 const createOwnerController = new CreateOwnerController()

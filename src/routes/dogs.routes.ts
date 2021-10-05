@@ -1,5 +1,5 @@
 import { Router } from 'express'
-import { CreateDogController } from '../controllers'
+import { CreateDogController } from '../controllers/dogs/CreateDogController'
 import { ListDogsController } from '../controllers/dogs/ListDogsController'
 
 const createDog = new CreateDogController()
