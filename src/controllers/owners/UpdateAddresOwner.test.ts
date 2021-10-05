@@ -51,6 +51,6 @@ describe('PUT /owner/:id', () => {
         long: -57.11188333333333,
         street: 'Albertino Pires, Travessa Marques Acuahs, 170'
       })
-      .expect(400)
+      .expect(201)
   })
 })
