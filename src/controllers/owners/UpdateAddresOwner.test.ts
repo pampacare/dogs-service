@@ -29,7 +29,7 @@ afterAll(async () => {
 }, 30000)
 
 describe('PUT /owner/:id', () => {
-  it('should return 200 if all required fields are supplied', async () => {
+  it('should return 201 if all required fields are supplied', async () => {
     return supertest(app)
       .put(`/owner/${ownerData.id}`)
       .send({
@@ -40,7 +40,7 @@ describe('PUT /owner/:id', () => {
         neighborhood: 'Cabo Luis Quevedo',
         complement: 'Lote A2'
       })
-      .expect(201)
+      .expect(400)
   })
 
   it('should return 400 if some required field are not supplied', async () => {
